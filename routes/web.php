@@ -13,10 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/',\App\Http\Livewire\HomeComponent::class);
+Route::get('/shop',\App\Http\Livewire\ShopComponent::class);
+Route::get('/cart',\App\Http\Livewire\CartComponent::class);
+Route::get('/checkout',\App\Http\Livewire\CheckoutComponent::class);
+
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+Route::get('/user/dashboard',\App\Http\Livewire\User\UserdashboardComponent::class)->name('user.dashboard');
+});
+Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
+    Route::get('/admin/dashboard',\App\Http\Livewire\User\UserdashboardComponent::class)->name('admin.dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+

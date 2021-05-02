@@ -37,7 +37,7 @@
                     <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item" >
-                                <a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+                                <a title="Hotline: 0766344455" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                             </li>
                         </ul>
                     </div>
@@ -169,7 +169,9 @@
                             <a href="#" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">4 items</span>
+                                    @if(Cart::count()>0)
+                                    <span class="index">{{Cart::count()}}</span>
+                                    @endif
                                     <span class="title">CART</span>
                                 </div>
                             </a>
